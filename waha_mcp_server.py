@@ -13,7 +13,7 @@ mcp = FastMCP("waha-mcp-server")
 @mcp.tool()
 async def send_message(phone_number: str, message: str) -> Dict[str, Any]:
     """
-    Envia uma mensagem para um número de WhatsApp usando a API Z-API.io
+    Envia uma mensagem para um número de WhatsApp usando a API do WAHA
 
     Args:
         phone_number: Número de telefone no formato completo (com código do país)
@@ -22,19 +22,15 @@ async def send_message(phone_number: str, message: str) -> Dict[str, Any]:
     Returns:
         Resposta da API em formato JSON
     """
-    instance = os.environ["INSTANCE"]
-    token = os.environ["TOKEN"]
-    client_token = os.environ["CLIENT_TOKEN"]
-
-    url = f"https://api.z-api.io/instances/{instance}/token/{token}/send-text"
+    url = "http://localhost:3000/api/sendText"
 
     payload = json.dumps({
-        "phone": phone_number,
-        "message": message
+      "chatId": f"{phone_number}@c.us",
+      "text": message,
+      "session": "default"
     })
 
     headers = {
-        'Client-Token': client_token,
         'Content-Type': 'application/json'
     }
 

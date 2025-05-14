@@ -1,50 +1,29 @@
-# WhatsApp MCP Server
+# WAHA MCP Server
 
-A FastMCP server implementation that provides WhatsApp messaging capabilities using the Z-API.io service. This server allows you to send WhatsApp messages programmatically through a simple interface.
+[![Linguagem](https://img.shields.io/badge/linguagem-Python-blue.svg)](https://www.python.org/)
 
-## Features
+Servidor MCP (Message Control Protocol) que interage com uma instância do [WAHA (WhatsApp HTTP API)](https://github.com/devlikeapro/waha) para enviar mensagens do WhatsApp e ler uma lista de contatos de um arquivo local.
 
-- Send WhatsApp messages using Z-API.io
-- Contact management through JSON file
-- Asynchronous message handling
-- Error logging and handling
+## Funcionalidades Principais ✨
 
-## Prerequisites
+*   **Envio de Mensagens via WAHA:** Expõe uma ferramenta (`send_message`) que permite enviar mensagens de texto para números de WhatsApp através de uma API WAHA local.
+*   **Leitura de Contatos:** Expõe um recurso (`read_resource`) que lê um arquivo JSON local (`data/contacts.json`) para fornecer uma lista de contatos.
+*   **Integração com FastMCP:** Construído sobre o framework `FastMCP` para expor ferramentas e recursos.
 
-- Python 3.x
-- Access to Z-API.io service
-- Valid Z-API.io credentials (Instance ID, Token, and Client Token)
+## Tecnologias Utilizadas 🛠️
 
-## Installation
+*   **Linguagem:** Python 3
+*   **Framework MCP:** `FastMCP` (do pacote `mcp-server`)
+*   **Comunicação HTTP:** Biblioteca `requests` (para interagir com a API WAHA)
+*   **Dependência Externa:** WAHA (WhatsApp HTTP API) - **Não incluído neste projeto, deve estar rodando separadamente.**
 
-1. Clone the repository:
+## Pré-requisitos 📋
 
-2. Install dependencies using UV:## Configuration
+Antes de começar, você precisará ter instalado em sua máquina:
 
-The server requires the following environment variables:
-
-- `INSTANCE`: Your Z-API.io instance ID
-- `TOKEN`: Your Z-API.io token
-- `CLIENT_TOKEN`: Your Z-API.io client token
-
-You can set these variables in your environment or use a `.env` file.
-
-## Contact List Configuration
-
-Create a `data/contacts.json` file with your contacts in the following format:
-
-```json
-{
-    "contact_name": "phone_number",
-    "john": "5511999999999"
-}
-```python waha_mcp_server.pypython waha_mcp_server.pyThis README provides a comprehensive overview of your WhatsApp MCP server project, including setup instructions, configuration requirements, and usage examples. You may want to customize it further by:
-
-1. Adding the actual repository URL
-2. Including specific license information
-3. Adding more detailed contribution guidelines
-4. Including any specific deployment instructions
-5. Adding troubleshooting guides
-6. Including any additional features or functionalities you plan to add
-
-Would you like me to modify any section or add more specific information to the README?
+*   Python (recomendado 3.7+)
+*   `pip` (gerenciador de pacotes Python)
+*   Uma instância do **WAHA (WhatsApp HTTP API)** rodando e acessível em `http://localhost:3000`.
+    *   Consulte a documentação do WAHA para instalação e configuração.
+    *   Certifique-se de que uma sessão do WhatsApp (nomeada `default` neste código) esteja ativa e conectada no WAHA.
+*   Git (para clonar o repositório, se aplicável)
